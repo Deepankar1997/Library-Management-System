@@ -30,9 +30,14 @@ class Library:
         self.Books.append(Book_To_Donate)
         print("Thank you for your great generosity! We, at Central Library, greatly appreciate your donation.")
 
-    def Library_card_Details(self, name, Contact_Number):
+    def Library_card_Details_Name(self, name):
         self.name = name
-        self.Contact_Number = Contact_Number
+
+    def Library_Card_Details_Contact_No(self, Contact_No):
+        self.Contact_No = Contact_No
+
+    def Library_Card_Details_Id(self, Id):
+        self.Id = Id
 
 
 class Student:
@@ -52,15 +57,30 @@ class Student:
         return self.Books
 
     def Your_Details(self):
-        print("Hello Sir/Ma'am !\nFor our Library Membership card, you can apply online as well as ofline.")
 
-        print("\nKindly provide the following details-")
+        if Choice == 5:
+            print(
+                "\nHello Sir/Ma'am !\nFor our Library Membership card, you can apply online as well as ofline.")
 
-        self.name = input("Please enter your name :- ")
-        self.Contact_Number = int(input("Enter your Contact number :-"))
-        Greet = '''Congratulations! You have been successfully registered for Library Card. 
-Please collect your Library Card from our nearest branch.'''
+            print("\nKindly provide the following details-")
+
+            self.name = input("\nPlease enter your name :- ")
+
+            self.Contact_No = int(input("\nEnter your Contact number :-"))
+
+            self.Id = str(input(f"\nEnter the count of your name :- "))
+            print(f"Your Id is generated- {self.Id}.CL")
+
+        else:
+
+            print("Press 0 for main menu")
+            return False
+            exit(0)
+
+        Greet = '''\nCongratulations! You have been successfully registered for Library Card. 
+Please collect your Library Card from our nearest branch.\n'''
         print(Greet)
+        exit()
 
 
 if __name__ == "__main__":
@@ -73,8 +93,10 @@ if __name__ == "__main__":
 
 while(True):
 
-    Welcome_Message = '''===== Welcome to Central Library =====
-    Please choose the option :-
+    Welcome_Message = '''\n    ===== Central Library =====
+
+ -Welcome to the Hospital for minds- 
+    
     1. List of available books.
     2. Request to borrow book.
     3. Return a book.
@@ -84,7 +106,8 @@ while(True):
     '''
     print(Welcome_Message)
 
-    Choice = int(input("Choose an option from below :- "))
+    Choice = int(
+        input("Please select an option from above listed queries :- "))
     if (Choice == 1):
         Central_Library.Display_Available_Books()
 
@@ -98,7 +121,9 @@ while(True):
         Central_Library.Donate_Book(student.Donate_Book())
 
     elif (Choice == 5):
-        Central_Library.Library_card_Details(student.Your_Details())
+        Central_Library.Library_card_Details_Name(student.Your_Details())
+        Central_Library.Library_Card_Details_Contact_No(student.Your_Details())
+        Central_Library.Library_Card_Details_Id(student.Your_Details())
 
     elif (Choice == 6):
         print("Thanks for visiting - The Central Library. Have a great day ahead.")
